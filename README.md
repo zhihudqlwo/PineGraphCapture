@@ -74,21 +74,21 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/guards.py:5735** - # TODO(anijain2305) - There is a duplicate logic in Dynamo to find
 - [ ] **torch/_dynamo/guards.py:5774** - # TODO: the "guard" here is actually just the top level SHAPE_ENV
 - [ ] **torch/_dynamo/guards.py:6474** - # TODO(voz): Combine local and global guard builders.
-- [ ] **torch/_dynamo/output_graph.py:401** - # TODO: replace `same` function with the one in testing
-- [ ] **torch/_dynamo/output_graph.py:539** - # TODO we should expand this to make it work for atribtrary in/out
-- [ ] **torch/_dynamo/output_graph.py:769** - # TODO: maybe should just pass the entire f_code in here?  Not
-- [ ] **torch/_dynamo/output_graph.py:828** - # TODO (tmanlaibaatar) Remove this once we always lift params and buffers
-- [ ] **torch/_dynamo/output_graph.py:1407** - # TODO(rzou): can delete after we refactor speculate_subgraph to use nested GraphTracer.
-- [ ] **torch/_dynamo/output_graph.py:1636** - # TODO `nn_modules` has been historically overloaded to store a lot more
-- [ ] **torch/_dynamo/output_graph.py:2571** - # TODO get debug_locals working for nested graph breaks
-- [ ] **torch/_dynamo/output_graph.py:3010** - # TODO(voz): The way export uses gm, and fake tensors, is not supported with us resetting
-- [ ] **torch/_dynamo/output_graph.py:3025** - # TODO(voz): Ostensibly, this should be scoped and
-- [ ] **torch/_dynamo/output_graph.py:3194** - # TODO: we could omit this for objects we create but shouldn't be too much overhead for now
-- [ ] **torch/_dynamo/output_graph.py:3248** - # TODO: Why isn't this stored in meta :think:
-- [ ] **torch/_dynamo/output_graph.py:3397** - # TODO: We can also technically remove all cases when the input
-- [ ] **torch/_dynamo/output_graph.py:3418** - # TODO: I don't think it's possible to have a bare int/float here?
-- [ ] **torch/_dynamo/output_graph.py:3421** - # TODO: This will bail here if you ever end up with a more complicated
-- [ ] **torch/_dynamo/package.py:1019** - # TODO: save all relevant compilation metrics
+- [ ] **torch/_dynamo/output_graph.py:402** - # TODO: replace `same` function with the one in testing
+- [ ] **torch/_dynamo/output_graph.py:540** - # TODO we should expand this to make it work for atribtrary in/out
+- [ ] **torch/_dynamo/output_graph.py:770** - # TODO: maybe should just pass the entire f_code in here?  Not
+- [ ] **torch/_dynamo/output_graph.py:829** - # TODO (tmanlaibaatar) Remove this once we always lift params and buffers
+- [ ] **torch/_dynamo/output_graph.py:1408** - # TODO(rzou): can delete after we refactor speculate_subgraph to use nested GraphTracer.
+- [ ] **torch/_dynamo/output_graph.py:1637** - # TODO `nn_modules` has been historically overloaded to store a lot more
+- [ ] **torch/_dynamo/output_graph.py:2572** - # TODO get debug_locals working for nested graph breaks
+- [ ] **torch/_dynamo/output_graph.py:3011** - # TODO(voz): The way export uses gm, and fake tensors, is not supported with us resetting
+- [ ] **torch/_dynamo/output_graph.py:3026** - # TODO(voz): Ostensibly, this should be scoped and
+- [ ] **torch/_dynamo/output_graph.py:3204** - # TODO: we could omit this for objects we create but shouldn't be too much overhead for now
+- [ ] **torch/_dynamo/output_graph.py:3258** - # TODO: Why isn't this stored in meta :think:
+- [ ] **torch/_dynamo/output_graph.py:3407** - # TODO: We can also technically remove all cases when the input
+- [ ] **torch/_dynamo/output_graph.py:3428** - # TODO: I don't think it's possible to have a bare int/float here?
+- [ ] **torch/_dynamo/output_graph.py:3431** - # TODO: This will bail here if you ever end up with a more complicated
+- [ ] **torch/_dynamo/package.py:1023** - # TODO: save all relevant compilation metrics
 - [ ] **torch/_dynamo/pgo.py:561** - # TODO: I'm not sure if we should just bong the entire pgo
 - [ ] **torch/_dynamo/pgo.py:603** - # TODO: info versions of these logs that log only once
 - [ ] **torch/_dynamo/pgo.py:1008** - # TODO: use a safe tempfile create to eliminate lock
@@ -111,13 +111,13 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/repro/after_dynamo.py:333** - # TODO: It's inconsistent to pass SymInt inputs but REAL tensors.
 - [ ] **torch/_dynamo/repro/after_dynamo.py:520** - # TODO: disable clone
 - [ ] **torch/_dynamo/resume_execution.py:611** - # TODO(jansel): add dead code elimination here
-- [ ] **torch/_dynamo/side_effects.py:784** - # TODO: Modify this API so that we preserve type info of
-- [ ] **torch/_dynamo/side_effects.py:886** - # TODO(anijain2305) - Is it possible to remove this specialization?
-- [ ] **torch/_dynamo/side_effects.py:1076** - # TODO see if we could prune dead cells - cell pruning information needs to be forwarded
-- [ ] **torch/_dynamo/side_effects.py:1107** - # TODO track from all possible sources.
-- [ ] **torch/_dynamo/side_effects.py:1215** - # TODO generalize this so we never need to call `make_cell`.
-- [ ] **torch/_dynamo/side_effects.py:1244** - # cleared it. TODO move this call into `add_cache`
-- [ ] **torch/_dynamo/side_effects.py:1783** - # TODO generalize this for cells created during inlining.
+- [ ] **torch/_dynamo/side_effects.py:785** - # TODO: Modify this API so that we preserve type info of
+- [ ] **torch/_dynamo/side_effects.py:887** - # TODO(anijain2305) - Is it possible to remove this specialization?
+- [ ] **torch/_dynamo/side_effects.py:1077** - # TODO see if we could prune dead cells - cell pruning information needs to be forwarded
+- [ ] **torch/_dynamo/side_effects.py:1108** - # TODO track from all possible sources.
+- [ ] **torch/_dynamo/side_effects.py:1216** - # TODO generalize this so we never need to call `make_cell`.
+- [ ] **torch/_dynamo/side_effects.py:1245** - # cleared it. TODO move this call into `add_cache`
+- [ ] **torch/_dynamo/side_effects.py:1784** - # TODO generalize this for cells created during inlining.
 - [ ] **torch/_dynamo/source.py:1521** - # TODO: can probably write a generic "test this on everything in the chain"
 - [ ] **torch/_dynamo/symbolic_convert.py:910** - # TODO maybe should respect DtoH sync intention of users later??
 - [ ] **torch/_dynamo/symbolic_convert.py:2828** - # TODO(dynamo-team): check if exception is a subclass of BaseException
@@ -126,7 +126,7 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/symbolic_convert.py:6632** - # TODO: fix InstructionTranslator -> InstructionTranslatorBase
 - [ ] **torch/_dynamo/test_minifier_common.py:180** - # TODO: return a more appropriate data structure here
 - [ ] **torch/_dynamo/testing.py:218** - # TODO: shouldn't this be f_locals/f_globals from frame?
-- [ ] **torch/_dynamo/trace_rules.py:3802** - # TODO(yanboliang, anijain2305) - There are a few concerns that we should
+- [ ] **torch/_dynamo/trace_rules.py:3803** - # TODO(yanboliang, anijain2305) - There are a few concerns that we should
 - [ ] **torch/_dynamo/types.py:144** - # TODO(whc) how do I annotate a _RecordFunction here?
 - [ ] **torch/_dynamo/utils.py:487** - # TODO: should we assert that the keys of metadata are in CompilationMetrics?
 - [ ] **torch/_dynamo/utils.py:770** - # TODO(masneral): Deprecate this param.
@@ -165,13 +165,13 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/variables/builder.py:5321** - # TODO: for TensorGuards, this eventually may need more
 - [ ] **torch/_dynamo/variables/builder.py:5326** - # TODO: revise this, but for now this stride instead of ()
 - [ ] **torch/_dynamo/variables/builder.py:5416** - # pyrefly: ignore[bad-argument-type]  # TODO: create() accepts opaque constants as proxies
-- [ ] **torch/_dynamo/variables/builtin.py:880** - # TODO: If we expand this to handle tensor args, we need to manually
-- [ ] **torch/_dynamo/variables/dicts.py:1115** - # TODO(follow-up): add tests for invalid key type, missing key
-- [ ] **torch/_dynamo/variables/functions.py:758** - # TODO putting this here to avoid duplication, because we could hit this
-- [ ] **torch/_dynamo/variables/functions.py:770** - # TODO(anijain2305) - Replace directly calling UserFunctionVariable with
-- [ ] **torch/_dynamo/variables/functions.py:862** - # TODO refactor these 3 branches.
-- [ ] **torch/_dynamo/variables/functions.py:884** - # TODO figure out why source isn't available here, and whether
-- [ ] **torch/_dynamo/variables/functions.py:2902** - # TODO improve trace_rules reasoning to provide better hints.
+- [ ] **torch/_dynamo/variables/builtin.py:883** - # TODO: If we expand this to handle tensor args, we need to manually
+- [ ] **torch/_dynamo/variables/dicts.py:1119** - # TODO(follow-up): add tests for invalid key type, missing key
+- [ ] **torch/_dynamo/variables/functions.py:759** - # TODO putting this here to avoid duplication, because we could hit this
+- [ ] **torch/_dynamo/variables/functions.py:771** - # TODO(anijain2305) - Replace directly calling UserFunctionVariable with
+- [ ] **torch/_dynamo/variables/functions.py:863** - # TODO refactor these 3 branches.
+- [ ] **torch/_dynamo/variables/functions.py:885** - # TODO figure out why source isn't available here, and whether
+- [ ] **torch/_dynamo/variables/functions.py:2903** - # TODO improve trace_rules reasoning to provide better hints.
 - [ ] **torch/_dynamo/variables/higher_order_ops.py:704** - # TODO floats are not supported in HOP input/output
 - [ ] **torch/_dynamo/variables/higher_order_ops.py:1128** - # TODO - write an example with tensor as a graph attribute in
 - [ ] **torch/_dynamo/variables/higher_order_ops.py:1132** - # TODO - call_module is not supported because Dynamo Fx graph does
@@ -194,8 +194,8 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/variables/lazy.py:340** - # TODO: Add support for more types
 - [ ] **torch/_dynamo/variables/lists.py:235** - # TODO(dynamo-team): Replace iter_contains by a proper impl. once we
 - [ ] **torch/_dynamo/variables/misc.py:569** - # TODO: support an expression form as well
-- [ ] **torch/_dynamo/variables/misc.py:1313** - # TODO: change to Ts = TypeVarTuple("Ts") for py 3.11+
-- [ ] **torch/_dynamo/variables/misc.py:1871** - # TODO Add all the functions that go from constants to constants to can_constant_fold_through
+- [ ] **torch/_dynamo/variables/misc.py:1382** - # TODO: change to Ts = TypeVarTuple("Ts") for py 3.11+
+- [ ] **torch/_dynamo/variables/misc.py:1940** - # TODO Add all the functions that go from constants to constants to can_constant_fold_through
 - [ ] **torch/_dynamo/variables/nn_module.py:638** - # TODO: Use named_children when it supports remove_duplicate=False.
 - [ ] **torch/_dynamo/variables/nn_module.py:693** - # TODO: do we want to support __call__ for GM's?
 - [ ] **torch/_dynamo/variables/nn_module.py:761** - # TODO(anijain2305,export-team) - Remove this if condition when inlining of inbuilt nn modules is
@@ -207,19 +207,19 @@ The graph-capture implementation mirror carries a baseline README ledger of main
 - [ ] **torch/_dynamo/variables/tensor.py:3023** - # TODO: Should we allow non SymTypes here?  Today it is allowed
 - [ ] **torch/_dynamo/variables/tensor.py:3758** - # tensor data with a new type. TODO polyfill?
 - [ ] **torch/_dynamo/variables/tensor.py:3782** - # TODO builder should be able to handle `torch.Tensor.__init__`,
-- [ ] **torch/_dynamo/variables/torch.py:2512** - # TODO: this probably should be folded somewhere else but I'm not sure where
-- [ ] **torch/_dynamo/variables/torch.py:2513** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
-- [ ] **torch/_dynamo/variables/torch.py:2530** - # TODO: this probably should be folded somewhere else but I'm not sure where
-- [ ] **torch/_dynamo/variables/torch.py:2531** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
-- [ ] **torch/_dynamo/variables/torch.py:2546** - # TODO: this probably should be folded somewhere else but I'm not sure where
-- [ ] **torch/_dynamo/variables/torch.py:2547** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
-- [ ] **torch/_dynamo/variables/torch.py:2721** - # TODO: there maybe other recursive structures you need to
-- [ ] **torch/_dynamo/variables/torch.py:3872** - # TODO(voz): Replace w/ dynamic shape rewrite table.
-- [ ] **torch/_dynamo/variables/torch.py:3883** - # TODO for each of the following check on `out=` or `requires_grad=`
-- [ ] **torch/_dynamo/variables/torch.py:4534** - # TODO[@lucaskabela]: Remove the behavior below since it is deprecated
-- [ ] **torch/_dynamo/variables/torch.py:4602** - # TODO(jansel/bdhirsh) - There is some issue with
-- [ ] **torch/_dynamo/variables/torch.py:4613** - # TODO(jansel): if the new param falls out of scope, currently it won't get freed until
-- [ ] **torch/_dynamo/variables/torch_function.py:687** - # TODO move this logic into `TensorVariable`, or try to merge it
+- [ ] **torch/_dynamo/variables/torch.py:2538** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2539** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2556** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2557** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2572** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2573** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2747** - # TODO: there maybe other recursive structures you need to
+- [ ] **torch/_dynamo/variables/torch.py:3898** - # TODO(voz): Replace w/ dynamic shape rewrite table.
+- [ ] **torch/_dynamo/variables/torch.py:3909** - # TODO for each of the following check on `out=` or `requires_grad=`
+- [ ] **torch/_dynamo/variables/torch.py:4560** - # TODO[@lucaskabela]: Remove the behavior below since it is deprecated
+- [ ] **torch/_dynamo/variables/torch.py:4628** - # TODO(jansel/bdhirsh) - There is some issue with
+- [ ] **torch/_dynamo/variables/torch.py:4639** - # TODO(jansel): if the new param falls out of scope, currently it won't get freed until
+- [ ] **torch/_dynamo/variables/torch_function.py:697** - # TODO move this logic into `TensorVariable`, or try to merge it
 - [ ] **torch/_dynamo/variables/user_defined.py:838** - # TODO(tp_descr_get) - Comparison dunders must be checked before
 - [ ] **torch/_dynamo/variables/user_defined.py:888** - # TODO(tp_descr_get) - C-level descriptors not matched above (e.g.
 - [ ] **torch/_dynamo/variables/user_defined.py:1572** - # TODO(voz): These can invoke user code!
