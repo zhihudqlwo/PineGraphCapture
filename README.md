@@ -1,0 +1,242 @@
+# PineGraphCapture
+
+The graph-capture implementation mirror carries a baseline README ledger of maintenance comments.
+
+### 📝 Complete TODO List
+
+- [ ] **torch/_dynamo/__init__.py:204** - # TODO: https://github.com/pytorch/pytorch/issues/139200
+- [ ] **torch/_dynamo/aot_compile.py:1395** - # TODO: this should be replaced once we make the backend return the SerializableCallable directly.
+- [ ] **torch/_dynamo/backends/cudagraphs.py:93** - # TODO: error on unrecognized nodes
+- [ ] **torch/_dynamo/backends/distributed.py:161** - # TODO: add split id to CompileId: https://github.com/pytorch/tlparse/pull/83/files#r1880649384
+- [ ] **torch/_dynamo/backends/distributed.py:224** - # TODO(whc)
+- [ ] **torch/_dynamo/backends/distributed.py:341** - # TODO - better way of doing this?
+- [ ] **torch/_dynamo/bytecode_analysis.py:24** - # TODO(lucaskabela): consider moving Instruction into this file
+- [ ] **torch/_dynamo/bytecode_analysis.py:32** - # TODO(jansel): double check exception handling
+- [ ] **torch/_dynamo/bytecode_transformation.py:1596** - # TODO: reenable after better understanding how to handle sourceless
+- [ ] **torch/_dynamo/codegen.py:321** - # introduced. TODO sort out the invariants among side effect,
+- [ ] **torch/_dynamo/compiled_autograd.py:462** - # TODO(jansel): are all these modes needed?
+- [ ] **torch/_dynamo/compiled_autograd.py:1204** - # TODO(yf225): work around: remove dead codes like `sym_size` and `sym_numel` which are not used downstream. e.g.
+- [ ] **torch/_dynamo/comptime.py:146** - # TODO: Maybe complain if this isn't an int/bool/float variable
+- [ ] **torch/_dynamo/comptime.py:165** - # TODO: API for adding a custom guard
+- [ ] **torch/_dynamo/comptime.py:308** - # TODO: improve print format, current guard format is extremely
+- [ ] **torch/_dynamo/config.py:251** - # TODO(janimesh, voz): Remove both of these flags (or at least guard_nn_modules)
+- [ ] **torch/_dynamo/config.py:347** - # TODO: Detect this situation automatically so the user doesn't need
+- [ ] **torch/_dynamo/convert_frame.py:695** - # TODO - Running exec generated frame seems propagates f_globals to the
+- [ ] **torch/_dynamo/convert_frame.py:890** - # TODO - We want to run preserve_node_meta context manager here, but the CI
+- [ ] **torch/_dynamo/convert_frame.py:1526** - # TODO with torch._dynamo.config.patch(generate_pycode=True):
+- [ ] **torch/_dynamo/convert_frame.py:2337** - # TODO: replace with CompileEventLogger.compilation_metrics
+- [ ] **torch/_dynamo/convert_frame.py:2450** - # TODO(williamwen42) Unsupported exn's from tracing are handled and logged by symbolic_convert.py
+- [ ] **torch/_dynamo/convert_frame.py:2533** - # TODO mlazos: add support for same args, or record them
+- [ ] **torch/_dynamo/convert_frame.py:2636** - # TODO: the first condition is not covered by any test
+- [ ] **torch/_dynamo/create_parameter_op.py:50** - # TODO(jansel): alloc followed by free is inefficient, need a way to allocate an unbacked tensor.
+- [ ] **torch/_dynamo/debug_utils.py:846** - # TODO: Support bundling the entire repro into a zip file for ease of
+- [ ] **torch/_dynamo/debug_utils.py:882** - # TODO: transfer it to the right device?  But failing this
+- [ ] **torch/_dynamo/debug_utils.py:985** - # TODO: consider ensuring tensor and storage counters line up?
+- [ ] **torch/_dynamo/debug_utils.py:1025** - # TODO: being optional on device is kind of pointless as the default
+- [ ] **torch/_dynamo/debug_utils.py:1105** - # TODO: this doesn't actually symint atm
+- [ ] **torch/_dynamo/decorators.py:1316** - # TODO: Make this configurable via a supported public API
+- [ ] **torch/_dynamo/decorators.py:1334** - # TODO(voz): Should we bounds check?
+- [ ] **torch/_dynamo/decorators.py:1400** - # TODO: Make this configurable via a supported public API
+- [ ] **torch/_dynamo/decorators.py:1414** - # TODO(voz): Should we bounds check?
+- [ ] **torch/_dynamo/decorators.py:1467** - # TODO: Make this configurable via a supported public API
+- [ ] **torch/_dynamo/decorators.py:1483** - # TODO(voz): Should we bounds check?
+- [ ] **torch/_dynamo/decorators.py:1700** - # TODO: also implement nonrecursive patch_dynamo_config/dont_skip_tracing.
+- [ ] **torch/_dynamo/eval_frame.py:262** - # TODO(pianpwk): subsume this flag with better is_compiling() coverage
+- [ ] **torch/_dynamo/eval_frame.py:849** - # TODO: a bit awkward to time, this isn't inside of the dynamo compile region
+- [ ] **torch/_dynamo/eval_frame.py:1934** - # TODO(voz): Consider making "explain" output alongside a run / part of a run
+- [ ] **torch/_dynamo/eval_frame.py:1940** - # TODO(voz): Do we want a decorator for this?
+- [ ] **torch/_dynamo/eval_frame.py:1976** - # TODO(voz): We may have instances of `f` that mutate inputs, we should track sideeffects and reject.
+- [ ] **torch/_dynamo/eval_frame.py:1983** - # TODO(voz): Do we want a decorator for this?
+- [ ] **torch/_dynamo/eval_frame.py:2043** - # TODO(zhxchen17) Also preserve all the user constraints here.
+- [ ] **torch/_dynamo/eval_frame.py:2179** - # TODO: option to print ALL of the stack traces at once
+- [ ] **torch/_dynamo/eval_frame.py:2619** - # TODO(voz): We may have instances of `f` that mutate inputs, we should track sideeffects and reject.
+- [ ] **torch/_dynamo/exc.py:321** - # TODO: make this argument required once we remove Unsupported subclasses
+- [ ] **torch/_dynamo/exc.py:441** - # TODO: I'm a little uncertain about what error classification we should have
+- [ ] **torch/_dynamo/functional_export.py:943** - # TODO: inspect dictionary leaves and enable dict for ParamsSpec
+- [ ] **torch/_dynamo/guards.py:355** - # TODO: clarify what fn and attributes guard manager has to get the right things here
+- [ ] **torch/_dynamo/guards.py:1162** - # TODO - source debug string is probably wrong here.
+- [ ] **torch/_dynamo/guards.py:2576** - # TODO(anijain2305) - Delete this when DictGuardManager uses tags
+- [ ] **torch/_dynamo/guards.py:2746** - # TODO - Run a CI with the following uncommented to find the remaining places
+- [ ] **torch/_dynamo/guards.py:2779** - # TODO(anijain2305) - This is currently restricted to nn.Module objects
+- [ ] **torch/_dynamo/guards.py:2849** - # TODO(anijain2305) - Consider this moving this guard to C++
+- [ ] **torch/_dynamo/guards.py:2946** - # TODO - Consider moving this to C++ if stable
+- [ ] **torch/_dynamo/guards.py:3417** - # TODO(voz): Deduplicate w/ AOTAutograd dupe input guards
+- [ ] **torch/_dynamo/guards.py:3868** - # TODO(anijain2305,williamwen42) - Consider moving this to C++.
+- [ ] **torch/_dynamo/guards.py:3933** - # TODO(voz): Either populate a dispatch_key check into the guards, or error on users passing in an unsupported
+- [ ] **torch/_dynamo/guards.py:3937** - # TODO(voz): We are missing storage offset in all our tensor guards?
+- [ ] **torch/_dynamo/guards.py:4064** - #   marking indices of that tensor would match. TODO we can optimize that
+- [ ] **torch/_dynamo/guards.py:5127** - # TODO See if we have lift this branch as the first one.
+- [ ] **torch/_dynamo/guards.py:5222** - # TODO Be more explicit about the behavior for the users.
+- [ ] **torch/_dynamo/guards.py:5300** - # TODO(anijain2305) - Currently this information is stored as an attr on
+- [ ] **torch/_dynamo/guards.py:5312** - # TODO(anijain2305, ydwu4) - Skipping export because of following test
+- [ ] **torch/_dynamo/guards.py:5382** - # TODO: don't do the string rep, do something more structured here
+- [ ] **torch/_dynamo/guards.py:5610** - # TODO: we could make use of 'DefaultsSource' and offer a .guard.is_defaults() API
+- [ ] **torch/_dynamo/guards.py:5735** - # TODO(anijain2305) - There is a duplicate logic in Dynamo to find
+- [ ] **torch/_dynamo/guards.py:5774** - # TODO: the "guard" here is actually just the top level SHAPE_ENV
+- [ ] **torch/_dynamo/guards.py:6474** - # TODO(voz): Combine local and global guard builders.
+- [ ] **torch/_dynamo/output_graph.py:401** - # TODO: replace `same` function with the one in testing
+- [ ] **torch/_dynamo/output_graph.py:539** - # TODO we should expand this to make it work for atribtrary in/out
+- [ ] **torch/_dynamo/output_graph.py:769** - # TODO: maybe should just pass the entire f_code in here?  Not
+- [ ] **torch/_dynamo/output_graph.py:828** - # TODO (tmanlaibaatar) Remove this once we always lift params and buffers
+- [ ] **torch/_dynamo/output_graph.py:1407** - # TODO(rzou): can delete after we refactor speculate_subgraph to use nested GraphTracer.
+- [ ] **torch/_dynamo/output_graph.py:1636** - # TODO `nn_modules` has been historically overloaded to store a lot more
+- [ ] **torch/_dynamo/output_graph.py:2571** - # TODO get debug_locals working for nested graph breaks
+- [ ] **torch/_dynamo/output_graph.py:3010** - # TODO(voz): The way export uses gm, and fake tensors, is not supported with us resetting
+- [ ] **torch/_dynamo/output_graph.py:3025** - # TODO(voz): Ostensibly, this should be scoped and
+- [ ] **torch/_dynamo/output_graph.py:3194** - # TODO: we could omit this for objects we create but shouldn't be too much overhead for now
+- [ ] **torch/_dynamo/output_graph.py:3248** - # TODO: Why isn't this stored in meta :think:
+- [ ] **torch/_dynamo/output_graph.py:3397** - # TODO: We can also technically remove all cases when the input
+- [ ] **torch/_dynamo/output_graph.py:3418** - # TODO: I don't think it's possible to have a bare int/float here?
+- [ ] **torch/_dynamo/output_graph.py:3421** - # TODO: This will bail here if you ever end up with a more complicated
+- [ ] **torch/_dynamo/package.py:1019** - # TODO: save all relevant compilation metrics
+- [ ] **torch/_dynamo/pgo.py:561** - # TODO: I'm not sure if we should just bong the entire pgo
+- [ ] **torch/_dynamo/pgo.py:603** - # TODO: info versions of these logs that log only once
+- [ ] **torch/_dynamo/pgo.py:1008** - # TODO: use a safe tempfile create to eliminate lock
+- [ ] **torch/_dynamo/pgo.py:1080** - # TODO: don't log this multiple times
+- [ ] **torch/_dynamo/polyfills/builtins.py:67** - # TODO(guilhermeleobas): Implement this iterator as a VariableTracker to see if
+- [ ] **torch/_dynamo/polyfills/itertools.py:228** - # TODO: use indices = itertools.count() and merge implementation with the else branch
+- [ ] **torch/_dynamo/repro/after_aot.py:319** - # TODO: why do we need to deepcopy the original graph?
+- [ ] **torch/_dynamo/repro/after_aot.py:331** - # TODO: Failures here are troublesome because no real inputs,
+- [ ] **torch/_dynamo/repro/after_aot.py:768** - # TODO: improve these names with FQN
+- [ ] **torch/_dynamo/repro/after_aot.py:784** - # TODO: we may need to solve expressions to extract symbol definitions.
+- [ ] **torch/_dynamo/repro/after_aot.py:985** - # TODO: factor this out
+- [ ] **torch/_dynamo/repro/after_aot.py:1286** - # TODO: speed this up
+- [ ] **torch/_dynamo/repro/after_aot.py:1415** - # TODO: The logic for cloning inputs/models here is intentionally
+- [ ] **torch/_dynamo/repro/after_aot.py:1520** - # TODO: check eager determinism
+- [ ] **torch/_dynamo/repro/after_aot.py:1607** - # TODO: lazily load the inputs or something, rather than cloning them
+- [ ] **torch/_dynamo/repro/after_aot.py:1774** - # TODO: make this an option for --analyze too
+- [ ] **torch/_dynamo/repro/after_dynamo.py:203** - # TODO: Figure out why torch.compile'd hash isn't work on this codepath
+- [ ] **torch/_dynamo/repro/after_dynamo.py:209** - # TODO: improve these names with FQN
+- [ ] **torch/_dynamo/repro/after_dynamo.py:304** - # TODO: factor this out
+- [ ] **torch/_dynamo/repro/after_dynamo.py:333** - # TODO: It's inconsistent to pass SymInt inputs but REAL tensors.
+- [ ] **torch/_dynamo/repro/after_dynamo.py:520** - # TODO: disable clone
+- [ ] **torch/_dynamo/resume_execution.py:611** - # TODO(jansel): add dead code elimination here
+- [ ] **torch/_dynamo/side_effects.py:784** - # TODO: Modify this API so that we preserve type info of
+- [ ] **torch/_dynamo/side_effects.py:886** - # TODO(anijain2305) - Is it possible to remove this specialization?
+- [ ] **torch/_dynamo/side_effects.py:1076** - # TODO see if we could prune dead cells - cell pruning information needs to be forwarded
+- [ ] **torch/_dynamo/side_effects.py:1107** - # TODO track from all possible sources.
+- [ ] **torch/_dynamo/side_effects.py:1215** - # TODO generalize this so we never need to call `make_cell`.
+- [ ] **torch/_dynamo/side_effects.py:1244** - # cleared it. TODO move this call into `add_cache`
+- [ ] **torch/_dynamo/side_effects.py:1783** - # TODO generalize this for cells created during inlining.
+- [ ] **torch/_dynamo/source.py:1521** - # TODO: can probably write a generic "test this on everything in the chain"
+- [ ] **torch/_dynamo/symbolic_convert.py:910** - # TODO maybe should respect DtoH sync intention of users later??
+- [ ] **torch/_dynamo/symbolic_convert.py:2828** - # TODO(dynamo-team): check if exception is a subclass of BaseException
+- [ ] **torch/_dynamo/symbolic_convert.py:4213** - # TODO(dynamo-team): Refactor this to use sq_item / mp_ass_subscript
+- [ ] **torch/_dynamo/symbolic_convert.py:6359** - # TODO: mlazos, add support for enabling multiple artifact logs
+- [ ] **torch/_dynamo/symbolic_convert.py:6632** - # TODO: fix InstructionTranslator -> InstructionTranslatorBase
+- [ ] **torch/_dynamo/test_minifier_common.py:180** - # TODO: return a more appropriate data structure here
+- [ ] **torch/_dynamo/testing.py:218** - # TODO: shouldn't this be f_locals/f_globals from frame?
+- [ ] **torch/_dynamo/trace_rules.py:3802** - # TODO(yanboliang, anijain2305) - There are a few concerns that we should
+- [ ] **torch/_dynamo/types.py:144** - # TODO(whc) how do I annotate a _RecordFunction here?
+- [ ] **torch/_dynamo/utils.py:487** - # TODO: should we assert that the keys of metadata are in CompilationMetrics?
+- [ ] **torch/_dynamo/utils.py:770** - # TODO(masneral): Deprecate this param.
+- [ ] **torch/_dynamo/utils.py:885** - # TODO: the events that we capture in calculate_time_spent() seem a little
+- [ ] **torch/_dynamo/utils.py:1584** - # TODO(anijain2305) - Investigate if we can get rid of this function
+- [ ] **torch/_dynamo/utils.py:1824** - # TODO: The following are legacy fields, populated from the fields that replace
+- [ ] **torch/_dynamo/utils.py:2235** - # TODO: log to init/id tlparse after I add support for it
+- [ ] **torch/_dynamo/utils.py:2685** - # TODO: this is questionable
+- [ ] **torch/_dynamo/utils.py:3113** - # TODO: Delete this condition when rollout is done.  NB: this
+- [ ] **torch/_dynamo/utils.py:4815** - # TODO: Check that this is installed
+- [ ] **torch/_dynamo/utils.py:5148** - # TODO - This is a temporary situation where we have two versions of
+- [ ] **torch/_dynamo/variables/base.py:2053** - # TODO when LazyConstants are fully landed, we can use them here instead.
+- [ ] **torch/_dynamo/variables/base.py:2350** - # TODO: raise TypeError instead - Make sure the jit tests for ScriptDict/ScriptList works with
+- [ ] **torch/_dynamo/variables/builder.py:679** - # TODO: storing a SymInt here but not a FakeTensor is a pretty strange
+- [ ] **torch/_dynamo/variables/builder.py:1013** - # TODO(jansel): something like a REPR_MATCH might be more robust here
+- [ ] **torch/_dynamo/variables/builder.py:1368** - # TODO support source for sets and remove the special logics here.
+- [ ] **torch/_dynamo/variables/builder.py:1678** - # TODO: this doing it manually is bad
+- [ ] **torch/_dynamo/variables/builder.py:1773** - # TODO: Need to enable this for Dynamo after broader
+- [ ] **torch/_dynamo/variables/builder.py:2016** - # TODO(jansel): combine this case with the one above
+- [ ] **torch/_dynamo/variables/builder.py:3125** - # TODO(pearu,sparse-team) - Add the corresponding SPARSE_TENSOR_MATCH guards
+- [ ] **torch/_dynamo/variables/builder.py:3456** - # TODO - Why do we need to set the source of the np ndarray vt back to
+- [ ] **torch/_dynamo/variables/builder.py:3505** - # TODO: This should be dynamic, as we in general do not
+- [ ] **torch/_dynamo/variables/builder.py:3530** - # TODO: dynamic_dim = DimDynamic.STATIC should work but
+- [ ] **torch/_dynamo/variables/builder.py:3560** - # TODO: Do I actually need guard for constant source?
+- [ ] **torch/_dynamo/variables/builder.py:3654** - # TODO: Switch RandomValueSource over to use this, this is more
+- [ ] **torch/_dynamo/variables/builder.py:3671** - # TODO: Maybe the tensor-ification should be built into the source,
+- [ ] **torch/_dynamo/variables/builder.py:3804** - # TODO: when can this happen?
+- [ ] **torch/_dynamo/variables/builder.py:4348** - # TODO: this is a little sus, because we didn't check what the self is
+- [ ] **torch/_dynamo/variables/builder.py:4460** - # TODO: not sure about this fake mode test
+- [ ] **torch/_dynamo/variables/builder.py:4874** - # TODO: index export_constraints ahead of time so we don't have to
+- [ ] **torch/_dynamo/variables/builder.py:4947** - # TODO: This can be batched
+- [ ] **torch/_dynamo/variables/builder.py:4948** - # TODO: Doing this here is kind of sus, maybe better to set this
+- [ ] **torch/_dynamo/variables/builder.py:5026** - # TODO: the chain below leans on the automatic dynamic fall-through for dims that
+- [ ] **torch/_dynamo/variables/builder.py:5081** - # TODO this is hazy, marked_static loses to a weak marking for the size
+- [ ] **torch/_dynamo/variables/builder.py:5130** - # TODO: When does this show up?
+- [ ] **torch/_dynamo/variables/builder.py:5321** - # TODO: for TensorGuards, this eventually may need more
+- [ ] **torch/_dynamo/variables/builder.py:5326** - # TODO: revise this, but for now this stride instead of ()
+- [ ] **torch/_dynamo/variables/builder.py:5416** - # pyrefly: ignore[bad-argument-type]  # TODO: create() accepts opaque constants as proxies
+- [ ] **torch/_dynamo/variables/builtin.py:880** - # TODO: If we expand this to handle tensor args, we need to manually
+- [ ] **torch/_dynamo/variables/dicts.py:1115** - # TODO(follow-up): add tests for invalid key type, missing key
+- [ ] **torch/_dynamo/variables/functions.py:758** - # TODO putting this here to avoid duplication, because we could hit this
+- [ ] **torch/_dynamo/variables/functions.py:770** - # TODO(anijain2305) - Replace directly calling UserFunctionVariable with
+- [ ] **torch/_dynamo/variables/functions.py:862** - # TODO refactor these 3 branches.
+- [ ] **torch/_dynamo/variables/functions.py:884** - # TODO figure out why source isn't available here, and whether
+- [ ] **torch/_dynamo/variables/functions.py:2902** - # TODO improve trace_rules reasoning to provide better hints.
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:704** - # TODO floats are not supported in HOP input/output
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:1128** - # TODO - write an example with tensor as a graph attribute in
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:1132** - # TODO - call_module is not supported because Dynamo Fx graph does
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:1643** - # TODO - The eventual goal is to replace
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:1915** - # TODO - Today this is supported only for AC. AC HOP gets
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:2133** - # TODO - clean up num_intermediate_nodes_as_outputs - we do not need
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:2138** - # TODO: support pytree output
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:2425** - # TODO(voz): Support fake tensor dispatch for recursive
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:2517** - # TODO: Support kwargs
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:2530** - # TODO - removing consts from control flow ops need more work
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:3561** - # TODO: Support kwargs
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:3578** - # TODO - removing consts from control flow ops need more work
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:4406** - # TODO (tmanlaibaatar) support pytree here
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:5418** - # TODO - revisit if we need the python dispatcher
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:5599** - # TODO - revisit if we need enable_grad
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:5609** - # TODO - Do not support this path because of eager
+- [ ] **torch/_dynamo/variables/higher_order_ops.py:6457** - # TODO: Figure out how to handle output order diverging from eager
+- [ ] **torch/_dynamo/variables/invoke_subgraph.py:616** - # TODO(anijain2305): vLLM workaround -- skip CONSTANT_MATCH on
+- [ ] **torch/_dynamo/variables/invoke_subgraph.py:1368** - # TODO (anijain2305) - Collect issues why this does not work for export,
+- [ ] **torch/_dynamo/variables/lazy.py:340** - # TODO: Add support for more types
+- [ ] **torch/_dynamo/variables/lists.py:235** - # TODO(dynamo-team): Replace iter_contains by a proper impl. once we
+- [ ] **torch/_dynamo/variables/misc.py:569** - # TODO: support an expression form as well
+- [ ] **torch/_dynamo/variables/misc.py:1313** - # TODO: change to Ts = TypeVarTuple("Ts") for py 3.11+
+- [ ] **torch/_dynamo/variables/misc.py:1871** - # TODO Add all the functions that go from constants to constants to can_constant_fold_through
+- [ ] **torch/_dynamo/variables/nn_module.py:638** - # TODO: Use named_children when it supports remove_duplicate=False.
+- [ ] **torch/_dynamo/variables/nn_module.py:693** - # TODO: do we want to support __call__ for GM's?
+- [ ] **torch/_dynamo/variables/nn_module.py:761** - # TODO(anijain2305,export-team) - Remove this if condition when inlining of inbuilt nn modules is
+- [ ] **torch/_dynamo/variables/nn_module.py:1511** - # TODO(anijain2305) - This might not be needed if we let Dynamo
+- [ ] **torch/_dynamo/variables/object_protocol.py:1283** - # TODO(dynamo-team): This is a known bug in the codebase
+- [ ] **torch/_dynamo/variables/object_protocol.py:2114** - # TODO can trace this once TypingVariable is removed
+- [ ] **torch/_dynamo/variables/tensor.py:845** - # TODO - This is not a good solution but solves an accuracy issue.
+- [ ] **torch/_dynamo/variables/tensor.py:2313** - # TODO(jansel): returning None here is wrong, it should be
+- [ ] **torch/_dynamo/variables/tensor.py:3023** - # TODO: Should we allow non SymTypes here?  Today it is allowed
+- [ ] **torch/_dynamo/variables/tensor.py:3758** - # tensor data with a new type. TODO polyfill?
+- [ ] **torch/_dynamo/variables/tensor.py:3782** - # TODO builder should be able to handle `torch.Tensor.__init__`,
+- [ ] **torch/_dynamo/variables/torch.py:2512** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2513** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2530** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2531** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2546** - # TODO: this probably should be folded somewhere else but I'm not sure where
+- [ ] **torch/_dynamo/variables/torch.py:2547** - # TODO: some of the other symbolic_shapes special tools can also get this treatment too
+- [ ] **torch/_dynamo/variables/torch.py:2721** - # TODO: there maybe other recursive structures you need to
+- [ ] **torch/_dynamo/variables/torch.py:3872** - # TODO(voz): Replace w/ dynamic shape rewrite table.
+- [ ] **torch/_dynamo/variables/torch.py:3883** - # TODO for each of the following check on `out=` or `requires_grad=`
+- [ ] **torch/_dynamo/variables/torch.py:4534** - # TODO[@lucaskabela]: Remove the behavior below since it is deprecated
+- [ ] **torch/_dynamo/variables/torch.py:4602** - # TODO(jansel/bdhirsh) - There is some issue with
+- [ ] **torch/_dynamo/variables/torch.py:4613** - # TODO(jansel): if the new param falls out of scope, currently it won't get freed until
+- [ ] **torch/_dynamo/variables/torch_function.py:687** - # TODO move this logic into `TensorVariable`, or try to merge it
+- [ ] **torch/_dynamo/variables/user_defined.py:838** - # TODO(tp_descr_get) - Comparison dunders must be checked before
+- [ ] **torch/_dynamo/variables/user_defined.py:888** - # TODO(tp_descr_get) - C-level descriptors not matched above (e.g.
+- [ ] **torch/_dynamo/variables/user_defined.py:1572** - # TODO(voz): These can invoke user code!
+- [ ] **torch/_dynamo/variables/user_defined.py:1575** - # TODO(voz): These can invoke user code!
+- [ ] **torch/_dynamo/variables/user_defined.py:2035** - # TODO: arguably, this should route to wrap_symint/wrap_symfloat
+- [ ] **torch/_dynamo/variables/user_defined.py:2154** - # TODO else try reconstructing the object by, e.g., leveraging side
+- [ ] **torch/_dynamo/variables/user_defined.py:2745** - # TODO: missing method_is_overloaded
+- [ ] **torch/_dynamo/variables/user_defined.py:3210** - # TODO(jansel): add a guard to check for monkey patching?
+- [ ] **torch/_dynamo/variables/user_defined.py:3682** - # TODO(guilhermeleobas): This can trigger a side effect
+- [ ] **torch/_dynamo/variables/user_defined.py:3762** - # TODO(anijain2305) - Investigate if we need specialization for more
+- [ ] **torch/_dynamo/variables/user_defined.py:3888** - # TODO - Check what is this _is_c_defined_property and if this handling should be moved inside the PropertyVariable.
+- [ ] **torch/_dynamo/variables/user_defined.py:3950** - # TODO - Check when are these called - and if we need to create new VTs.
+- [ ] **torch/_dynamo/variables/user_defined.py:4074** - # TODO(tp_descr_get) - Investigate if we need a separate descriptor
+- [ ] **torch/_dynamo/variables/user_defined.py:5042** - # TODO(follow-up): add test for unhashable/invalid key type, Counter missing key
+- [ ] **torch/_dynamo/variables/user_defined.py:5140** - # TODO: move to dicts.py alongside ConstDictVariable.
+- [ ] **torch/_dynamo/variables/user_defined.py:5639** - # TODO this duplicates the logic in `BuiltinVariable(tuple)`
+
+## License
+
+The source licenses are retained at the repository root.
